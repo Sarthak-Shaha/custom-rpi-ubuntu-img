@@ -1,0 +1,17 @@
+name: Build Matterhub
+
+on:
+  push:
+  pull_request:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Run startcustomization.sh
+        run: ./startCustomization.sh
