@@ -28,12 +28,12 @@ jobs:
           sudo rm -rf /var/tmp/*
 
       - name: Print disk space after cleanup
-        run: df -h
-
-      - name: Run startCustomization.sh
         run: |
           df -ah
           ls -la
+
+      - name: Run startCustomization.sh
+        run: |
           ./startCustomization.sh
 
       - name: Print disk space after startcustomization.sh
