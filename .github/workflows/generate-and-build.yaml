@@ -33,8 +33,6 @@ jobs:
       - name: Print disk space after startcustomization.sh
         run: df -h
 
-    post:
-      always:
-        - name: Print size of each directory if runner fails
-          if: failure()
-          run: du -h --max-depth=1 /
+      - name: Print size of each directory if runner fails
+        if: failure()
+        run: du -h --max-depth=1 /
