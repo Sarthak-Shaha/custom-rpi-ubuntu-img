@@ -29,6 +29,7 @@ jobs:
 
       - name: Print disk space after cleanup
         run: |
+          ls -la /dev/root
           pwd
           df -ah
           ls -la
