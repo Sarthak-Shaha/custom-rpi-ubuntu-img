@@ -10,9 +10,6 @@ jobs:
     steps:
       - name: Print disk space before checkout
         run: df -h
-        
-      - name: Print all directories recursively and their sizes under /dev/root
-        run: sudo du -h /dev/root
 
       - name: checkout
         uses: actions/checkout@v2
@@ -33,12 +30,11 @@ jobs:
       - name: Print disk space after cleanup
         run: df -h
 
-      - name: Run startcustomization.sh
-        run: ./startCustomization.sh
+      - name: Run startCustomization.sh
+        run: |
+          df -ah
+          ls -la
+          ./startCustomization.sh
 
       - name: Print disk space after startcustomization.sh
         run: df -h
-
-      - name: Print size of each directory if runner fails
-        if: failure()
-        run: du -h --max-depth=1 /
