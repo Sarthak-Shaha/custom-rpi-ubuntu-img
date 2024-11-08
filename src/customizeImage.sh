@@ -158,8 +158,6 @@ cd /home/ubuntu/connectedhomeip/out/ota-provider && find . -maxdepth 1 ! -name c
 cd /home/ubuntu/connectedhomeip && find . -maxdepth 1 ! -name out -exec rm -fr {} \;
 sh -c 'echo 3 > /proc/sys/vm/drop_caches'
 cd /home/ubuntu && rm -rf ./.cache/* ./.cipd-cache-dir/* ./zap ./ot-br-posix
-rm -rf /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
-rm -rf /etc/ssh/sshd_config.d/50-cloud-init.conf
 
 # Change PasswordAuthentication to yes
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
