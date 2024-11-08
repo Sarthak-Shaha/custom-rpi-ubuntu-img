@@ -161,6 +161,10 @@ cd /home/ubuntu && rm -rf ./.cache/* ./.cipd-cache-dir/* ./zap ./ot-br-posix
 rm -rf /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
 rm -rf /etc/ssh/sshd_config.d/50-cloud-init.conf
 
+# Change PasswordAuthentication to yes
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.d/50-cloud-init.conf
+
 chmod a-x ./scripts/matterTool.sh
 mv /etc/apt/apt.conf.d/70debconf.bak /etc/apt/apt.conf.d/70debconf
 rm -f /etc/resolv.conf
