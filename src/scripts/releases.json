@@ -1,6 +1,6 @@
 { "release":"v2.4.0-1.4-ext",
   "commits": {
-		"chipTool": "eb2936c73b",
+		"chipTool": "fd2d0000ee",
 		"otefr32": "2980044",
 		"openthread": "1fceb225b",
 		"otbrposix": "e56c02006",
