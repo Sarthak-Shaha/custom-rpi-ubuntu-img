@@ -160,7 +160,13 @@ sh -c 'echo 3 > /proc/sys/vm/drop_caches'
 cd /home/ubuntu && rm -rf ./.cache/* ./.cipd-cache-dir/* ./zap ./ot-br-posix
 
 # Change PasswordAuthentication to yes
-sed -i 's|^Include /etc/ssh/ssh_config.d/\*.conf|#Include /etc/ssh/ssh_config.d/*.conf|' /etc/ssh/sshd_config
+cat <<EOL | sudo tee /etc/init.d/remove_file.sh > /dev/null
+#!/bin/bash
+rm -rf /etc/ssh/sshd_config.d/50-cloud-init.conf
+rm -rf /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
+EOL
+sudo chmod +x /etc/init.d/remove_file.sh
+sudo update-rc.d remove_file.sh defaults
 
 chmod a-x ./scripts/matterTool.sh
 mv /etc/apt/apt.conf.d/70debconf.bak /etc/apt/apt.conf.d/70debconf
