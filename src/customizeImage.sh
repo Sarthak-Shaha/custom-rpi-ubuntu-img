@@ -159,6 +159,12 @@ cd /home/ubuntu/connectedhomeip && find . -maxdepth 1 ! -name out -exec rm -fr {
 sh -c 'echo 3 > /proc/sys/vm/drop_caches'
 cd /home/ubuntu && rm -rf ./.cache/* ./.cipd-cache-dir/* ./zap ./ot-br-posix
 
+# Comment out Include line in /etc/ssh/ssh_config
+sed -i 's/^Include \/etc\/ssh\/ssh_config\.d\/\*\.conf/#&/' /etc/ssh/ssh_config
+
+# Comment out Include line in /etc/ssh/sshd_config
+sed -i 's/^Include \/etc\/ssh\/sshd_config\.d\/\*\.conf/#&/' /etc/ssh/sshd_config
+
 chmod a-x ./scripts/matterTool.sh
 mv /etc/apt/apt.conf.d/70debconf.bak /etc/apt/apt.conf.d/70debconf
 rm -f /etc/resolv.conf
