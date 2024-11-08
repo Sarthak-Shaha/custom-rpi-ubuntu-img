@@ -160,8 +160,7 @@ sh -c 'echo 3 > /proc/sys/vm/drop_caches'
 cd /home/ubuntu && rm -rf ./.cache/* ./.cipd-cache-dir/* ./zap ./ot-br-posix
 
 # Change PasswordAuthentication to yes
-sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
-sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.d/50-cloud-init.conf
+sed -i 's|^Include /etc/ssh/ssh_config.d/\*.conf|#Include /etc/ssh/ssh_config.d/*.conf|' /etc/ssh/sshd_config
 
 chmod a-x ./scripts/matterTool.sh
 mv /etc/apt/apt.conf.d/70debconf.bak /etc/apt/apt.conf.d/70debconf
@@ -169,3 +168,4 @@ rm -f /etc/resolv.conf
 ln -s ../run/systemd/resolve/resolv.conf /etc/resolv.conf
 echo "127.0.1.1 $UBUNTUUSER" | tee -a /etc/hosts
 #exit
+o/PasswordAuthentication yes/' /etc/ssh/sshd_config.d/50-cloud-init.conf
